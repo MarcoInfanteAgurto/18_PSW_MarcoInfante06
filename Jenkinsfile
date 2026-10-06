@@ -73,10 +73,22 @@ pipeline {
 
     post {
         success {
-            slackSend(channel: "${SLACK_CHANNEL}", color: 'good', message: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} - Pipeline de calidad completado. ${env.BUILD_URL}")
+            slackSend(
+                botUser: true,
+                channel: "${SLACK_CHANNEL}",
+                color: 'good',
+                message: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} - Pipeline de calidad completado. ${env.BUILD_URL}",
+                tokenCredentialId: 'slack-bot-token'
+            )
         }
         failure {
-            slackSend(channel: "${SLACK_CHANNEL}", color: 'danger', message: "FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER} - Revisar la ejecución. ${env.BUILD_URL}")
+            slackSend(
+                botUser: true,
+                channel: "${SLACK_CHANNEL}",
+                color: 'danger',
+                message: "FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER} - Revisar la ejecución. ${env.BUILD_URL}",
+                tokenCredentialId: 'slack-bot-token'
+            )
         }
         always {
             archiveArtifacts artifacts: 'target/jmeter-results.jtl,target/site/jacoco/**', allowEmptyArchive: true
