@@ -4,7 +4,7 @@ pipeline {
     environment {
         APP_URL = 'http://localhost:8085'
         SONARQUBE_SERVER = 'SonarQube'
-        SLACK_CHANNEL = '#calidad'
+        SLACK_CHANNEL = '#nuevo-canal'
         JAVA_HOME = 'C:\\Program Files\\Java\\jdk-21.0.11'
         MAVEN_HOME = 'C:\\Program Files\\Java\\Apache\\apache-maven-3.9.16'
         PATH = "${MAVEN_HOME}\\bin;${JAVA_HOME}\\bin;${env.PATH}"
